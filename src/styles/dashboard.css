@@ -1,0 +1,30 @@
+/* Page-level composition via @apply */
+
+/* .db__surface { @apply app-surface; } */
+.db__card    { @apply app-card; }
+.db__nav     { @apply nav-col; }
+.db__editor  { @apply editor-col; }
+.db__side    { @apply side-col; }
+
+.db__row     { @apply row-between; }
+.db__h1      { @apply h1-main; }
+.db__muted   { @apply sub-muted; }
+
+.db__moods   { @apply mood-row; }
+.db__chip-joy   { @apply chip chip-joy; }
+.db__chip-calm  { @apply chip chip-calm; }
+.db__chip-focus { @apply chip chip-focus; }
+.db__chip-low   { @apply chip chip-low; }
+.db__chip-sad   { @apply chip chip-sad; }
+.db__chip-angry { @apply chip chip-angry; }
+
+.db__editorCard { @apply editor-card; }
+.db__titleInput { @apply input-title; }
+.db__textarea   { @apply textarea-editor; }
+
+.db__list      { @apply list-section; }
+.db__listHead  { @apply list-head; }
+.db__entry     { @apply entry-item; }
+
+.db__btn       { @apply brand-btn brand-btn--ghost; }
+.db__btnPrimary{ @apply brand-btn brand-btn--primary; }

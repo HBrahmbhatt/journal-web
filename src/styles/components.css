@@ -1,0 +1,522 @@
+/* Layout */
+@utility container-auth {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-columns: 1fr;
+  place-items: center;
+  padding: var(--space-2xl);
+}
+
+/* Card */
+@utility card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 28rem;
+}
+@utility card-title {
+  font-size: var(--font-size-h1);
+  line-height: var(--lh-tight);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-sm);
+}
+@utility card-subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+/* Form */
+@utility form-row {
+  display: grid;
+  gap: var(--space-sm);
+}
+@utility form-stack {
+  display: grid;
+  gap: var(--space-lg);
+}
+@utility form-actions {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@utility input-label {
+  display: block;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: calc(var(--space-xs) + 2px);
+}
+@utility input-text {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Buttons */
+@utility brand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-height);
+  padding: 0 var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  font-weight: var(--font-weight-semibold);
+  transition: transform 120ms ease, box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+@utility brand-btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+@utility brand-btn--ghost {
+  background: transparent;
+  color: var(--color-brand-600);
+  border: 1px solid var(--color-border);
+}
+
+/* States (plain CSS, intentionally NOT inside @utility) */
+.brand-btn:hover {
+  transform: translateY(-1px);
+}
+.brand-btn:active {
+  transform: translateY(0);
+}
+.brand-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.login__btn-primary:hover {
+  background: var(--btn-hover-bg);
+}
+/* === Dashboard layout primitives === */
+
+/* White card container for the whole app */
+@utility app-card {
+  background: var(--color-bg);
+  border: var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sheet);
+  display: grid;
+  grid-template-columns: 15rem 1fr 20rem; /* nav | editor | sidebar */
+  gap: var(--space-xl);
+  padding: var(--space-xl);
+}
+
+/* Left nav column */
+@utility nav-col {
+  display: grid;
+  align-content: start;
+  gap: var(--space-lg);
+  border-right: 0.0625rem solid var(--color-border);
+  padding-right: var(--space-xl);
+}
+
+/* Middle editor column */
+@utility editor-col {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Right sidebar column */
+@utility side-col {
+  display: grid;
+  gap: var(--space-lg);
+  border-left: 0.0625rem solid var(--color-border);
+  padding-left: var(--space-xl);
+}
+
+/* Section headings */
+@utility h1-main {
+  font-size: var(--font-size-display);
+  line-height: var(--lh-tight);
+  font-weight: var(--font-weight-semibold);
+}
+
+@utility sub-muted {
+  color: var(--color-text-secondary);
+}
+
+/* Row with title left, date right */
+@utility row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Mood chips row */
+@utility mood-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Chip base + variants from tokens */
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--chip-padding-y) var(--chip-padding-x);
+  border-radius: var(--chip-radius);
+  font-size: var(--chip-font-size);
+  font-weight: var(--font-weight-medium);
+}
+
+@utility chip-joy {
+  background: var(--chip-bg);
+  color: var(--chip-text);
+} /* will override below */
+@utility chip-calm {
+  background: var(--color-brand-50);
+  color: var(--color-brand-700);
+}
+@utility chip-focus {
+  background: #fef3c7;
+  color: #92400e;
+} /* amber‑100/800 */
+@utility chip-low {
+  background: #eef2ff;
+  color: var(--color-brand-700);
+}
+@utility chip-sad {
+  background: #f1f5f9;
+  color: #64748b;
+}
+@utility chip-angry {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Sidebar list */
+@utility list-section {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@utility list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@utility entry-item {
+  display: grid;
+  gap: 4px;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+/* Editor area */
+@utility editor-card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-sheet);
+  padding: var(--card-padding);
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Title input + big textarea */
+@utility input-title {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  background: transparent;
+}
+
+@utility textarea-editor {
+  width: 100%;
+  min-height: 16rem;
+  padding: var(--space-md);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+/* TipTap content defaults */
+.tiptap {
+  outline: none;
+}
+.tiptap > * + * {
+  margin-top: 0.75rem;
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.25rem;
+  color: var(--color-text-primary);
+}
+.tiptap ul {
+  list-style: disc outside;
+}
+.tiptap ol {
+  list-style: decimal outside;
+}
+.tiptap blockquote {
+  border-left: 0.25rem solid var(--color-border);
+  padding-left: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.tiptap code {
+  background: #f6f8fa;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+.tiptap pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+
+/* TipTap placeholder text */
+.tiptap .is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  height: 0;
+  float: left;
+}
+
+/* Editor area (keeps your min-height + left align) */
+@utility rte-area {
+  display: block;
+  width: 100%;
+  min-height: 16rem;
+  height: auto;
+  padding: var(--space-md);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-align: left;
+}
+
+/* Tailwind Typography wrapper (headings/lists sizing) */
+@utility rte-prose {
+  @apply prose prose-slate max-w-none;
+}
+
+/* Editor column */
+@utility editor-col {
+  display: grid;
+  gap: var(--space-xl);
+  align-content: start;
+  grid-auto-rows: min-content;
+}
+
+/* Toolbar */
+@utility editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: 0.25rem 0.5rem;
+}
+@utility editor-toolbar--soft {
+  box-shadow: var(--shadow-card);
+}
+@utility editor-toolbar--nowrap {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 0.25rem;
+}
+
+@utility editor-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+@utility editor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+/* (fix: missing dot before selector) */
+.editor-btn:hover {
+  background: var(--color-brand-200);
+  color: var(--color-brand-700);
+}
+@utility editor-btn--active {
+  background: var(--color-brand-200);
+  color: var(--color-brand-700);
+}
+
+@utility editor-select {
+  height: 1.75rem;
+  padding: 0 0.5rem;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-caption);
+}
+
+@utility editor-option {
+  height: 1.75rem;
+  padding: 0 0.5rem;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-caption);
+}
+
+@utility editor-sep {
+  width: 0.0625rem;
+  height: 1.25rem;
+  background: var(--color-border);
+}
+
+/* anchor for the dropdown */
+@utility mood-wrap {
+  position: relative;
+  display: block;
+  border: 0.0625rem solid var(--color-border);
+  padding: var(--space-xs);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+
+/* panel */
+@utility combo-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: var(--space-sm);
+  background: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sheet);
+  padding: var(--space-sm);
+  min-width: 16rem;
+  max-height: 16rem;
+  overflow: auto;
+  z-index: 50;
+}
+
+/* list & options */
+@utility combo-options {
+  display: grid;
+  gap: var(--space-xs);
+}
+@utility combo-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.combo-option:hover,
+.combo-option:focus {
+  background: var(--color-brand-50);
+  color: var(--color-brand-700);
+}
+@utility combo-option--active {
+  background: var(--color-brand-50);
+  color: var(--color-brand-700);
+}
+
+/* input (reuse your input-text) */
+@utility combo-input {
+  @apply input-text;
+  height: 2rem;
+}
+
+/* make chips removable/selectable */
+@utility chip-selectable {
+  cursor: pointer;
+  user-select: none;
+}
+@utility chip-selected {
+  box-shadow: inset 0 0 0 0.125rem var(--color-brand-600);
+}
+
+@utility suggest-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+@utility hint-text {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+@utility chip-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border:0 !important;
+  outline:0;
+  width: 100%;
+  background-clip: padding-box;
+}
+
+
+@utility chip-field {
+  flex: 1 1 8rem;
+  min-width: 8rem;                  /* reduce from 16rem so it doesn’t crowd */
+  border: 0; outline: 0;
+  background: transparent;
+  font: inherit;
+  padding: 0.125rem;
+  line-height: 1.5;
+  appearance: none;
+}
+
+
+@utility chip-trigger {
+  margin-left: auto;
+}
+
+@utility combo-pop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: var(--space-sm);
+  background: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sheet);
+  max-height: 16rem;
+  overflow: auto;
+  z-index: 50;
+  padding: var(--space-sm);
+}
+
+@utility chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+@utility hint-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+}
+@utility chip-ghost {
+  opacity: 0.85;
+}

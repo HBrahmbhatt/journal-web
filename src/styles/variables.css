@@ -1,0 +1,52 @@
+:root {
+  /* Core Colors */
+  --color-bg: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-weak: #475569;
+  --color-border: #E5E7EB;
+
+  /* Brand Indigo */
+  --color-brand-50: #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-200: #C7D2FE;
+  --color-brand-500: #6366F1;
+  --color-brand-600: #4F46E5;
+  --color-brand-700: #4338CA;
+
+  /* Mood / Accent Colors */
+  --color-joy: #10B981;
+  --color-calm: #60A5FA;
+  --color-focus: #F59E0B;
+  --color-low: #A78BFA;
+  --color-sad: #64748B;
+  --color-angry: #EF4444;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+
+  /* Typography */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-serif: 'Literata', serif;
+  --text-display: 32px;
+  --text-h1: 24px;
+  --text-h2: 20px;
+  --text-body: 16px;
+  --text-caption: 13px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  /* Shadow / Elevation */
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-sheet: 0 12px 32px rgba(0,0,0,0.15);
+}
