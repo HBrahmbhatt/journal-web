@@ -86,17 +86,8 @@
 
 --chip-padding-y: 0.25rem;
 --chip-padding-x: 0.625rem;
---chip-radius: 624.9375rem; /* 9999px */
+--chip-radius: 624.9375rem;
 --chip-font-size: var(--font-size-caption);
 --chip-bg: var(--color-brand-50);
 --chip-text: var(--color-brand-700);
 }
-
-
-/* :root {
-color: var(--color-text-primary);
-background: var(--color-bg);
-font-family: var(--font-sans);
-font-size: var(--font-size-body);
-line-height: var(--lh-normal);
-} */

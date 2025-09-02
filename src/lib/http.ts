@@ -10,7 +10,8 @@ export interface RequestOpts {
   body?: unknown
   token?: string            // optional Bearer token (authed() will set this)
   headers?: Record<string, string>
-  parse?: Parser            // default 'json'
+  parse?: Parser
+  signal?: AbortSignal          // default 'json'
 }
 
 /** single low-level request (non-throwing) */
@@ -32,10 +33,9 @@ export async function apiRequest<T = any>(path: string, opts: RequestOpts = {}) 
 
 function safeJson(t: string) { try { return JSON.parse(t) } catch { return t } }
 
-/** convenience for simple POST JSON (keeps your current call sites happy) */
-export function postJsonRaw<T = any>(path: string, body: unknown, httpmethod: Method = 'POST') {
-  return apiRequest<T>(path, { method: httpmethod, body })
-}
+// export function postJsonRaw<T = any>(path: string, body: unknown, httpmethod: Method = 'POST') {
+//   return apiRequest<T>(path, { method: httpmethod, body })
+// }
 
 /** high-level authed call: adds Bearer, 401→refresh→retry once, throws on failure */
 export async function authed<T = any>(path: string, opts: Omit<RequestOpts,'token'> = {}): Promise<T> {
@@ -46,7 +46,9 @@ export async function authed<T = any>(path: string, opts: Omit<RequestOpts,'toke
   let res = await apiRequest<T>(path, { ...opts, token: token1 })
   if (res.ok) return res.data
 
-  // try refresh on 401
+  if(res.status === 204){
+    throw new Error('No journals found');
+  }
   if (res.status === 401) {
     await refreshAccessToken().catch(() => {})
     const token2 = tokenStore.get()

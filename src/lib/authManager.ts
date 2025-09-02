@@ -13,12 +13,10 @@ export async function ensureAccessToken(): Promise<boolean> {
     const data = await res.json()
     const at = data?.accessToken ?? data?.token ?? data?.access_token
     if (!at) return false
-    setAccessToken(at)   // <-- instead of tokenStore.set
+    setAccessToken(at)
     return true
   } catch { return false }
 }
-
-
 
 export function isAuthReady() {
   return ready;
@@ -101,6 +99,6 @@ export async function logout(): Promise<void> {
     // ignore network errors
   } finally {
     setAccessToken(null)  // clears in-memory token + cancels refresh timer
-    tokenStore.clear()    // if you expose this, it's a no-op after setAccessToken(null)
+    tokenStore.clear() // clears persisted token
   }
 }

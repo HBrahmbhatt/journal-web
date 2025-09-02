@@ -3,6 +3,34 @@ import { ChevronDown } from 'lucide-react'
 
 type Mood = { key: string; label: string; emoji: string; cls: string }
 
+export function moodChipClass(name: string): string {
+  const key = name?.toLowerCase().trim();
+  switch (key) {
+    case 'joy':
+    case 'happy':
+      return 'db__chip-joy';
+    case 'calm':
+    case 'relaxed':
+      return 'db__chip-calm';
+    case 'focus':
+    case 'focused':
+      return 'db__chip-focus';
+    case 'sad':
+    case 'blue':
+      return 'db__chip-sad';
+    case 'angry':
+    case 'mad':
+      return 'db__chip-angry';
+    case 'nostalgic':
+    case 'thoughtful':
+    case 'neutral':
+    default:
+      return 'db__chip-low';
+  }
+}
+
+
+
 const ALL: Mood[] = [
   { key: 'joy',   label: 'Joy',   emoji: '😊', cls: 'db__chip-joy' },
   { key: 'calm',  label: 'Calm',  emoji: '😌', cls: 'db__chip-calm' },
